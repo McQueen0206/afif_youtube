@@ -1,0 +1,37 @@
+<!-- video-detail.component.html -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <!-- Responsive video embed -->
+      <div class="ratio ratio-16x9 mb-4">
+        <iframe [src]="videoUrl" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <!-- Video Information -->
+      <h2 class="mb-3">{{ videoTitle }}</h2>
+      <p class="text-muted">{{ videoPublicationDate | date:'mediumDate' }}</p>
+      <p>{{ videoDescription }}</p>
+
+      <div class="d-flex justify-content-start align-items-center mb-4">
+        <span class="badge bg-primary me-3"><i class="bi bi-eye-fill"></i> {{ videoViewCount | number }} views</span>
+        <span class="badge bg-success"><i class="bi bi-hand-thumbs-up-fill"></i> {{ videoLikeCount | number }} likes</span>
+      </div>
+
+      <!-- Comments Section -->
+      <div class="card">
+        <div class="card-header">
+          <h4>Comments</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let comment of comments">
+            <strong>{{ comment.snippet.topLevelComment.snippet.authorDisplayName }}</strong>
+            <p>{{ comment.snippet.topLevelComment.snippet.textDisplay }}</p>
+          </li>
+        </ul>
+        <div class="card-footer" *ngIf="nextPageToken">
+          <button class="btn btn-primary" (click)="loadMoreComments()">Show More Comments</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

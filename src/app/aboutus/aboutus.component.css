@@ -1,0 +1,9 @@
+/* aboutus.component.css */
+h1, h2 {
+    color: #007bff; /* Bootstrap primary color */
+}
+
+.list-group-item {
+    background-color: #f8f9fa; /* A lighter background for list items */
+    border-color: #f8f9fa; /* Soften the list-group border */
+}

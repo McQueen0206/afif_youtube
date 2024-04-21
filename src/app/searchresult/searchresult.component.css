@@ -1,0 +1,32 @@
+/* searchresult.component.css */
+.card-img-top {
+    width: 100%;
+    height: 180px; /* Fixed height for better alignment */
+    object-fit: cover; /* Ensure the image covers the area nicely */
+  }
+  
+  .card-title {
+    font-size: 1.25rem; /* Larger title font */
+  }
+  
+  .card-text {
+    height: 80px; /* Fixed height for uniformity */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis to overflow */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit text to 3 lines */
+    -webkit-box-orient: vertical;
+  }
+  
+  .btn-group .btn {
+    border-radius: 0.25rem;
+  }
+  
+  @media (min-width: 768px) {
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+  

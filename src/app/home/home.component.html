@@ -1,0 +1,40 @@
+<!-- home.component.html -->
+<div class="container py-5">
+  <h1 class="mb-4 text-center">Welcome to My YouTube System</h1>
+  <div class="row justify-content-center">
+      <div class="col-md-8">
+          <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Search videos..." [(ngModel)]="searchQuery" (keyup.enter)="searchVideos()">
+              <button class="btn btn-outline-secondary" type="button" (click)="searchVideos()">Search</button>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <h3 class="col-12 mb-3">Trending Videos</h3>
+      <div class="col-md-4 mb-4" *ngFor="let video of trendingVideos">
+          <div class="card h-100">
+            <a [routerLink]="['/video', video.id]" class="stretched-link"></a>
+              <img [src]="video.snippet.thumbnails.high.url" class="card-img-top" alt="...">
+              <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">{{ video.snippet.title }}</h5>
+                  <p class="card-text flex-grow-1">{{ video.snippet.description | slice:0:100 }}...</p>
+                  <div>
+                      <span class="fa fa-eye"></span> {{ video.statistics.viewCount | number }} Views
+                      <span class="fa fa-thumbs-up ml-3"></span> {{ video.statistics.likeCount | number }} Likes
+                  </div>
+                  <a href="https://www.youtube.com/watch?v={{ video.id.videoId }}" target="_blank" class="btn btn-primary mt-3">Watch</a>
+              </div>
+          </div>
+      </div>
+      <div class="col-12 d-flex justify-content-between my-4 align-items-center">
+        <button class="btn btn-info" (click)="goToPrevPage()" [disabled]="!prevPageToken || currentPage <= 1">Previous</button>
+        
+        <!-- Pagination Info -->
+        <div>
+            Page {{ currentPage }} of {{ totalPages }}
+        </div>
+    
+        <button class="btn btn-info" (click)="goToNextPage()" [disabled]="!nextPageToken">Next</button>
+    </div>
+  </div>
+</div>
