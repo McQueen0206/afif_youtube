@@ -1,4 +1,3 @@
-// youtube.service.ts
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -24,7 +23,7 @@ export class YoutubeService {
     return this.http.get(url);
   }
 
-  getVideoDetails(videoId: string): Observable<any> {  // Added this method
+  getVideoDetails(videoId: string): Observable<any> {
     const url = `${this.apiUrl}videos?id=${videoId}&part=snippet,contentDetails,statistics&key=${this.apiKey}`;
     return this.http.get(url);
   }
